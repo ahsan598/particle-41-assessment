@@ -15,7 +15,7 @@ COPY package*.json ./
 RUN npm install --production
 
 # Copy source code to working directory
-COPY . .
+COPY src ./src
 
 # =========================
 # Stage 2 - Runner
