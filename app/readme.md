@@ -10,7 +10,6 @@ A minimal **Node.js** microservice that returns the current **Timestamp** and th
 }
 ```
 
----
 
 ### ⚙️ Prerequisites
 
@@ -29,13 +28,14 @@ If any of these tools are not installed, please install them first before procee
 > 
 > All Docker commands in this guide are shown without `sudo`.  
 > If your system requires root privileges to run Docker, either use `sudo` before every command  
-> or add your user to the Docker group:
+> or add your user to the docker group:
 > 
 > ```sh
 > sudo usermod -aG docker $USER
 > newgrp docker
 > ```
 
+---
 
 ### 📂 Project Structure
 ```perl
