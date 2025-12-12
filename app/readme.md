@@ -3,7 +3,7 @@
 A minimal **Node.js** microservice that returns the current **Timestamp** and the **Client's IP** address in JSON format.
 
 **API Endpoint Output**
-```json
+```cpp
 {
   "timestamp": "YYYY-MM-DDTHH:MM:SS.000Z",  // Current UTC time in ISO 8601 format
   "ip": "::1"                              // Client's IP address (::1 = IPv6 localhost)
