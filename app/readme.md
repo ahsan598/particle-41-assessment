@@ -10,6 +10,7 @@ A minimal **Node.js** microservice that returns the current **Timestamp** and th
 }
 ```
 
+---
 
 ### ⚙️ Prerequisites
 
@@ -35,7 +36,6 @@ If any of these tools are not installed, please install them first before procee
 > newgrp docker
 > ```
 
----
 
 ### 📂 Project Structure
 ```perl
@@ -53,6 +53,7 @@ app/                               # Root folder of the project
 └── README.md                      # Documentation on how to run, build & deploy the app
 ```
 
+---
 
 ### 🔧 Implementation Steps
 **Step-1: Clone this Project & Run Locally Without Docker**
@@ -147,6 +148,3 @@ kubectl delete -f k8s/
 - Health probes (liveness/readiness)
 - Non-root container user
 - Clean and production-friendly structure
-
----
-
