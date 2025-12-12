@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+Dockerfile
+.git
+.gitignore
+readme.md
+k8s

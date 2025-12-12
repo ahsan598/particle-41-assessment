@@ -1,0 +1,15 @@
+# Node.js Dependencies
+node_modules/
+npm-debug.log
+
+# Build / Output folders
+dist/
+build/
+
+# Environment Variables
+.env
+.env.*
+
+# Editor / IDE settings
+.vscode/
+.DS_Store

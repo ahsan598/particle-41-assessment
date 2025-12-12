@@ -1,0 +1,13 @@
+{
+  "name": "simple-time-service",
+  "version": "1.0.0",
+  "description": "A tiny microservice returning timestamp and client IP.",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
