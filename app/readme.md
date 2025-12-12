@@ -24,7 +24,17 @@ If any of these tools are not installed, please install them first before procee
 | **Docker**  | Builds and runs the container image for this service | Refer this document to install [Docker](https://docs.docker.com/engine/install/)  |
 | **KIND** *(optional)* | To deploy the microservice locally on Kubernetes using Kind | Refer this document to install [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)            |
 
-> **Note:** Node.js includes npm, no need to install separately
+
+> **Note:** Node.js includes npm, no need to install separately.
+> 
+> All Docker commands in this guide are shown without `sudo`.  
+> If your system requires root privileges to run Docker, either use `sudo` before every command  
+> or add your user to the Docker group:
+> 
+> ```sh
+> sudo usermod -aG docker $USER
+> newgrp docker
+> ```
 
 
 ### 📂 Project Structure
@@ -71,7 +81,7 @@ docker pull ahsan98/sts:1.0
 # Verify image got pulled
 docker images
 
-# Run the container in detached mode
+# Run the container in detached mode with pulled image
 docker run -dp 8080:8080 --name <container-name> ahsan98/sts:1.0
 
 # Verify the container is running
@@ -97,6 +107,7 @@ docker push <dockerhub-username>/<image-name>:<tag>
 
 # Verify by pulling the same image (recommended)
 docker pull <dockerhub-username>/<image-name>:<tag>
+docker images
 ```
 
 **Step-4: Kubernetes Deployment (Optional)**
@@ -136,3 +147,6 @@ kubectl delete -f k8s/
 - Health probes (liveness/readiness)
 - Non-root container user
 - Clean and production-friendly structure
+
+---
+
