@@ -8,9 +8,10 @@ crash.log
 crash.*.log
 .terraform.lock.hcl
 
-# # Terraform plan output
+# Terraform plan output
 *.tfplan
 tfplan
+plan.tfplan
 
 # # Sensitive variable files
 # *.tfvars
