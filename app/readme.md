@@ -108,6 +108,8 @@ docker push <dockerhub-username>/<image-name>:<tag>
 
 # Verify by pulling the same image (recommended)
 docker pull <dockerhub-username>/<image-name>:<tag>
+
+# List docker images
 docker images
 ```
 

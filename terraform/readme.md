@@ -40,12 +40,20 @@ terraform/
 ```
 
 
+### Architect Diagram
+
+![architect-diagram](/terraform/assets/images/architect-diagram.png)
+
+
 ### 🚀 Deployment Steps
 
 1. Clone the repo
 ```sh
-git clone <your-repo-url>
-cd terraform
+# Clone the repository
+git clone https://github.com/ahsan598/particle-41-assessment.git
+
+# Move into the project directory
+cd particle-41-assessment/terraform
 ```
 2. Update `terraform.tfvars` or use the default values provided.
 
@@ -70,7 +78,11 @@ terraform plan
 4. Apply Infrastructure using below options
 ```sh
 # Option A: Recommended (Using Plan File)
+
+# Shows what Terraform will create, update, or delete and saves the exact changes to a plan file for later use
 terraform plan -out plan.tfplan
+
+# Applies exactly what was reviewed in the plan file, ensuring safe, consistent, and production-grade deployments
 terraform apply "plan.tfplan" 
 
 # Option B: Quick Apply
