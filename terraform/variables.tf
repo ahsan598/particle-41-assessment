@@ -9,6 +9,11 @@ variable "aws_region" {
 variable "environment" {
   description = "Environment name (dev, staging, prod)"
   type        = string
+
+  validation {
+    condition     = contains(["dev", "staging", "prod"], var.environment)
+    error_message = "Environment must be dev, staging, or prod."
+  }
 }
 
 variable "project_name" {
@@ -47,14 +52,9 @@ variable "enable_https" {
   type        = bool
 }
 
-variable "container_port" {
-  description = "Port on which the ECS container listens"
-  type        = number
-
-  validation {
-    condition     = var.container_port > 0 && var.container_port < 65536
-    error_message = "container_port must be between 1 and 65535"
-  }
+variable "enable_vpc_endpoints" {
+  description = "Enable VPC endpoints security group (for private ECS without NAT)"
+  type        = bool
 }
 
 # ============================================
@@ -129,7 +129,6 @@ variable "ssl_certificate_arn" {
 # ============================================
 # ECS configuration variables
 # ============================================
-
 variable "enable_container_insights" {
   description = "Enable Container Insights for ECS Cluster."
   type        = bool
@@ -145,8 +144,19 @@ variable "container_image" {
   type        = string
 }
 
-# Task Configurations
+variable "container_port" {
+  description = "Port on which the ECS container listens"
+  type        = number
 
+  validation {
+    condition     = var.container_port > 0 && var.container_port < 65536
+    error_message = "container_port must be between 1 and 65535"
+  }
+}
+
+# ============================================
+# Task Configurations
+# ============================================
 variable "task_cpu" {
   description = "CPU units for task (256=0.25 vCPU, 512=0.5 vCPU, 1024=1 vCPU)"
   type        = string
@@ -187,11 +197,13 @@ variable "deployment_minimum_healthy_percent" {
   type        = number
 }
 
+# ============================================
 # Logging Configurations
+# ============================================
 variable "log_retention_days" {
   description = "Number of days to retain CloudWatch logs for ECS."
   type        = number
-  default     = 30
+  default     = 7
 }
 
 variable "health_check_grace_period_seconds" {

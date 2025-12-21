@@ -3,7 +3,6 @@
 # This module outputs the IDs of the VPC, subnets, NAT gateways,
 # and internet gateway created for the ECS Tasks.
 # ===================================================================
-
 output "vpc_id" {
   description = "The ID of the VPC"
   value       = aws_vpc.main.id

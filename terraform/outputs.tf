@@ -43,6 +43,11 @@ output "ecs_security_group_id" {
   value       = module.security_groups.ecs_security_group_id 
 }
 
+output "vpc_endpoints_security_group_id" {
+  description = "Security group ID for VPC endpoints (if enabled)"
+  value       = module.security_groups.vpc_endpoints_security_group_id
+}
+
 # ============================================
 # ALB Outputs
 # ============================================
@@ -59,6 +64,11 @@ output "alb_arn" {
 output "alb_dns_name" {
   description = "The DNS name of the Application Load Balancer"
   value       = module.alb.alb_dns_name
+}
+
+output "alb_zone_id" {
+  description = "ALB hosted zone ID (for Route53 alias records)"
+  value       = module.alb.alb_zone_id
 }
 
 output "target_group_id" {
@@ -84,7 +94,6 @@ output "https_listener_arn" {
 # ============================================
 # ECS Outputs
 # ============================================
-
 output "ecs_cluster_id" {
   description = "The ID of the ECS Cluster."
   value       = module.ecs.ecs_cluster_id
@@ -93,6 +102,11 @@ output "ecs_cluster_id" {
 output "ecs_cluster_arn" {
   description = "The ARN of the ECS Cluster."
   value       = module.ecs.ecs_cluster_arn
+}
+
+output "service_id" {
+  description = "ECS Service ID"
+  value       = module.ecs.service_id
 }
 
 output "ecs_task_definition_arn" {

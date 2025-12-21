@@ -3,7 +3,6 @@
 # This module defines the input variables required to create a VPC
 # with public and private subnets for ECS and ALB.
 # ===================================================================
-
 variable "project_name" {
   description = "Name of the project"
   type        = string

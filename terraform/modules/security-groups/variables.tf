@@ -2,7 +2,6 @@
 # Variables for Security Groups Module
 # This module defines the security groups for ALB and ECS Tasks.
 # ===================================================================
-
 variable "project_name" {
   description = "Name of the project"
   type        = string
@@ -13,11 +12,6 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "enable_https" {
-  description = "Enable HTTPS ingress rule for ALB"
-  type        = bool
-}
-
 variable "container_port" {
   description = "Port on which the ECS container listens"
   type        = number
@@ -26,4 +20,14 @@ variable "container_port" {
     condition     = var.container_port > 0 && var.container_port < 65536
     error_message = "container_port must be between 1 and 65535"
   }
+}
+
+variable "enable_https" {
+  description = "Enable HTTPS ingress rule for ALB"
+  type        = bool
+}
+
+variable "enable_vpc_endpoints" {
+  description = "Enable VPC endpoints security group (for private ECS without NAT)"
+  type        = bool
 }

@@ -3,7 +3,6 @@
 # It contains all the input variables required for configuring
 # an Application Load Balancer (ALB).
 # =====================================================================
-
 variable "project_name" {
   description = "Name of the project"
   type        = string

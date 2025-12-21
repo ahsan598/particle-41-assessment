@@ -2,7 +2,6 @@
 # Variables for ECS Tasks Module
 # This module sets up an ECS Tasks within the VPC created in the VPC module.
 # ============================================================================
-
 variable "project_name" {
   description = "The name of the project, used for naming resources."
   type        = string
@@ -49,8 +48,9 @@ variable "container_port" {
   type        = number
 }
 
+# ============================
 # Task Configurations
-
+# ============================
 variable "task_cpu" {
   description = "CPU units for task (256=0.25 vCPU, 512=0.5 vCPU, 1024=1 vCPU)"
   type        = string
@@ -91,11 +91,13 @@ variable "deployment_minimum_healthy_percent" {
   type        = number
 }
 
+# ============================
 # Logging Configurations
+# ============================
 variable "log_retention_days" {
   description = "Number of days to retain CloudWatch logs for ECS."
   type        = number
-  default     = 30
+  default     = 7
 }
 
 variable "health_check_grace_period_seconds" {
@@ -103,7 +105,9 @@ variable "health_check_grace_period_seconds" {
   type        = number
 }
 
+# ============================
 # Custom IAM Policies
+# ============================
 variable "task_policy_statements" {
   description = "Custom IAM policy statements for task role"
   type        = any

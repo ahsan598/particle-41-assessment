@@ -4,7 +4,9 @@
 # and private subnets for ECS tasks.
 # ===================================================================
 
-# Create a VPC with a specified CIDR block
+# ============================================
+# VPC CONFIGURATION
+# ============================================
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -15,7 +17,9 @@ resource "aws_vpc" "main" {
   }
 }
 
+# ============================================
 # Internet Gateway for the VPC
+# ============================================
 resource "aws_internet_gateway" "igw" {
   vpc_id  = aws_vpc.main.id
 
@@ -24,7 +28,9 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# Create Public Subnets (for ALB)
+# ============================================
+# Public Subnets for ALB
+# ============================================
 resource "aws_subnet" "public" {
   count                   = length(var.public_subnet_cidrs)
   vpc_id                  = aws_vpc.main.id
@@ -37,7 +43,9 @@ resource "aws_subnet" "public" {
   }
 }
 
-# Create Private Subnets (for ECS tasks)
+# ============================================
+# Private Subnets for ECS tasks
+# ============================================
 resource "aws_subnet" "private" {
   count             = length(var.private_subnet_cidrs)
   vpc_id            = aws_vpc.main.id
@@ -49,7 +57,9 @@ resource "aws_subnet" "private" {
   }
 }
 
+# ============================================
 # Elastic IP for NAT Gateway (One per AZ)
+# ============================================
 resource "aws_eip" "eip_nat" {
   count   = length(var.availability_zones)
   domain  = "vpc"
@@ -59,7 +69,9 @@ resource "aws_eip" "eip_nat" {
   }
 }
 
+# ============================================
 # NAT Gateway in each Public Subnet
+# ============================================
 resource "aws_nat_gateway" "nat" {
   count         = length(var.availability_zones)
   allocation_id = aws_eip.eip_nat[count.index].id
@@ -73,7 +85,9 @@ resource "aws_nat_gateway" "nat" {
   depends_on = [aws_internet_gateway.igw]
 }
 
+# ============================================
 # Route Table for Public Subnets
+# ============================================
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
@@ -88,14 +102,18 @@ resource "aws_route_table" "public" {
   }
 }
 
+# ====================================================
 # Associate Public Subnets with Public Route Table
+# ====================================================
 resource "aws_route_table_association" "public" {
   count          = length(aws_subnet.public)
   subnet_id      = aws_subnet.public[count.index].id
   route_table_id = aws_route_table.public.id
 }
 
+# =========================================================
 # Route Table for Private Subnets  (one per AZ for HA)
+# =========================================================
 resource "aws_route_table" "private" {
   count  = length(var.availability_zones)
   vpc_id = aws_vpc.main.id
@@ -111,7 +129,9 @@ resource "aws_route_table" "private" {
   }
 }
 
+# ====================================================
 # Associate Private Subnets with Private Route Table
+# ====================================================
 resource "aws_route_table_association" "private" {
   count          = length(aws_subnet.private)
   subnet_id      = aws_subnet.private[count.index].id

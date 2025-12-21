@@ -1,7 +1,6 @@
 # ===================================================
 # Outputs for Application Load Balancer Module
 # ===================================================
-
 output "alb_id" {
   description = "The ID of the Application Load Balancer"
   value       = aws_lb.main.id
@@ -15,6 +14,11 @@ output "alb_arn" {
 output "alb_dns_name" {
   description = "The DNS name of the Application Load Balancer"
   value       = aws_lb.main.dns_name
+}
+
+output "alb_zone_id" {
+  description = "ALB hosted zone ID (for Route53 alias records)"
+  value       = aws_lb.main.zone_id
 }
 
 output "target_group_id" {

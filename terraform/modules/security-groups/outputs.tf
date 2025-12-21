@@ -2,7 +2,6 @@
 # Outputs for Security Groups Module
 # This module outputs the security group IDs for ALB and ECS Tasks.
 # ===================================================================
-
 output "alb_security_group_id" {
   description = "Security group ID for ALB "
   value       = aws_security_group.alb_sg.id 
@@ -11,4 +10,9 @@ output "alb_security_group_id" {
 output "ecs_security_group_id" {
   description = "Security group ID for ECS tasks"
   value       = aws_security_group.ecs_sg.id 
+}
+
+output "vpc_endpoints_security_group_id" {
+  description = "Security group ID for VPC endpoints (if enabled)"
+  value       = var.enable_vpc_endpoints ? aws_security_group.vpc_endpoints[0].id : null
 }

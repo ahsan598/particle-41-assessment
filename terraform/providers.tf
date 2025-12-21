@@ -2,6 +2,9 @@
 # Specify the required Terraform version and AWS provider version
 # =================================================================
 
+# ============================================
+# VERSION CONSTRAINT
+# ============================================
 terraform {
   required_version = ">= 1.10.0"
 
@@ -13,7 +16,10 @@ terraform {
   }
 }
 
-# Configure the AWS provider
+
+# ============================================
+# PROVIDER CONFIGURATION
+# ============================================
 provider "aws" {
   region = var.aws_region
 

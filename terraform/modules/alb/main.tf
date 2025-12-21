@@ -4,7 +4,9 @@
 # along with a target group configured for ECS services.
 # =====================================================================
 
-# Create Application Load Balancer
+# ============================================
+# APPLICATION LOAD BALANCER
+# ============================================
 resource "aws_lb" "main" {
   name                        = "${var.project_name}-alb"
   internal                    = false
@@ -21,7 +23,9 @@ resource "aws_lb" "main" {
   }
 }
 
+# ============================================
 # Create Target Group for ECS Service
+# ============================================
 resource "aws_lb_target_group" "ecs" {
   name        = "${var.project_name}-tg"
   port        = var.container_port
@@ -55,7 +59,9 @@ resource "aws_lb_target_group" "ecs" {
   depends_on = [ aws_lb.main ]
 }
 
+# ============================================
 # Create Listener for ALB
+# ============================================
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
   port              = var.listener_port
@@ -71,7 +77,9 @@ resource "aws_lb_listener" "http" {
   }
 }
 
+# ============================================
 # Create HTTPS Listener if enabled
+# ============================================
 resource "aws_lb_listener" "https" {
   count             = var.enable_https ? 1 : 0
   load_balancer_arn = aws_lb.main.arn
@@ -92,4 +100,3 @@ resource "aws_lb_listener" "https" {
     Name = "${var.project_name}-https-listener"
   }
 }
-
