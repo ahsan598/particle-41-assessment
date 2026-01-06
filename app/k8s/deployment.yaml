@@ -43,14 +43,6 @@ spec:
               port: 8080
             initialDelaySeconds: 10
             periodSeconds: 10
-          
-          # Readiness Probe – ready for traffic?
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
 
 ---
 # Service to expose the Deployment
