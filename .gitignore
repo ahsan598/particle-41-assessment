@@ -3,28 +3,14 @@
 # ===============================
 node_modules/
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
 dist/
 build/
 
 # ===============================
-# Envs & Secrets
+# Envs & Logs
 # ===============================
 .env
 .env.*
-.aws/
-*.pem
-*.key
-*.pub
-*.crt
-*.cer
-*.cert
-
-# ===============================
-# Logs
-# ===============================
 logs/
 *.log
 
@@ -35,27 +21,12 @@ logs/
 Thumbs.db
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# ===============================
-# Local .terraform directories
-# ===============================
-**/.terraform/*
-*.terraform/*
 
 # ===============================
 # Terraform state files
 # ===============================
+**/.terraform/*
+*.terraform/*
 *.tfstate.*
 *.tfstate
-crash.log
-crash.*.log
 .terraform.lock.hcl
-
-# ===============================
-# Terraform plan output
-# ===============================
-*.tfplan
-tfplan
-plan.tfplan
