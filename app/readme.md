@@ -25,11 +25,7 @@ If any of these tools are not installed, please install them first before procee
 | **KIND** *(optional)* | To deploy the microservice locally on Kubernetes using Kind | Refer this document to install [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)            |
 
 
-> **Note:** Node.js includes npm, no need to install separately.
-> 
-> All Docker commands in this guide are shown without `sudo`.  
-> If your system requires root privileges to run Docker, either use `sudo` before every command  
-> or add your user to the docker group:
+> All Docker commands in this guide are shown without `sudo`, add your user to the docker group:
 > 
 > ```sh
 > sudo usermod -aG docker $USER
@@ -122,11 +118,8 @@ kubectl get all -l app=sts
 # Check the Service endpoints (should show Pod IPs)
 kubectl get endpoints sts-svc
 
-# Access the service locally (port-forward)
-kubectl port-forward svc/sts-svc 8080:80
-
 # Browse the service at
-http://localhost:8080
+http://localhost:30080
 ```
 
 **Step-5: Clean up Everything**
