@@ -46,9 +46,7 @@ app/                               # Root folder of the project
 ├── package-lock.json              # Dependency lock file for reproducible installs
 ├── Dockerfile                     # Multi-stage docker build file to containerize the app
 ├── .dockerignore                  # Files/folders docker should ignore during image build
-├── k8s/                           # Kubernetes manifests for deployment
-│   ├── deployment.yaml            # Kubernetes deployment (pods, replicas, probes)
-│   └── service.yaml               # Kubernetes service (expose pod in/outside cluster)
+├── k8s/                           # Kubernetes manifests for sts-app
 ├── .gitignore                     # Files git should ignore (node_modules, logs, env)
 └── README.md                      # Documentation on how to run, build & deploy the app
 ```
