@@ -1,5 +1,5 @@
 # ===============================
-# Node Dependencies
+# Node dependencies
 # ===============================
 node_modules/
 npm-debug.log*
@@ -15,7 +15,7 @@ logs/
 *.log
 
 # ===============================
-# OS / Editor
+# IDE & OS Specific Files
 # ===============================
 .DS_Store
 Thumbs.db
