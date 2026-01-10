@@ -1,4 +1,4 @@
-# Containerized Application Deployment (Docker, Kubernetes, Terraform, AWS)
+# Cloud-Native Time Service App (Terraform, AWS ECS)
 
 This repository demonstrates a **minimalist containerized application** and its **cloud-ready infrastructure**.
 

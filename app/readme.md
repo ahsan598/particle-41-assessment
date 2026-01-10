@@ -1,4 +1,4 @@
-# 🧭 Simple Time Service MicroService App
+# Simple Time Service MicroService App
 
 A minimal **Node.js** microservice that returns the current **Timestamp** and the **Client's IP** address in JSON format.
 
