@@ -1,4 +1,4 @@
-# 🚀 Containerized Application Deployment (Docker, Kubernetes, Terraform, AWS)
+# Containerized Application Deployment (Docker, Kubernetes, Terraform, AWS)
 
 This repository demonstrates a **minimalist containerized application** and its **cloud-ready infrastructure**.
 

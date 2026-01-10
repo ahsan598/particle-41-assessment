@@ -1,6 +1,8 @@
 # Terraform Infrastructure Deployment (AWS ECS Fargate)
 
-This repository contains Terraform code to deploy a production-style AWS ECS Fargate setup for the Simple Time Service container. It provisions a VPC, public/private subnets, an internet-facing ALB, and an ECS service running tasks in private subnets only.
+This repository contains **Terraform** code to deploy a production-style **AWS ECS Fargate** setup for the sts app container. It provisions a **VPC, subnets, ALB, and ECS service**.
+
+### 🎯 Project Overview
 
 - VPC with 2 public + 2 private subnets
 - ECS Fargate cluster + service running in private subnets only
@@ -10,16 +12,18 @@ This repository contains Terraform code to deploy a production-style AWS ECS Far
 
 
 ### 🧰 Prerequisites
-| Tool          | Purpose                              | Docs                                 |
-| ------------- | ------------------------------------ | -------------------------------------- |
-| **Terraform** | Provision AWS Infrastructure         | Refer this document [here](https://developer.hashicorp.com/terraform)      |
+
+Before you start, make sure you have installed:
+
+| Tool          | Purpose                              | Docs                      |
+| ------------- | ------------------------------------ | ------------------------- |
+| **Terraform** | Provision AWS Infrastructure         | Refer this document [here](https://developer.hashicorp.com/terraform)     |
 | **AWS CLI**   | Authentication & access              | Refer this document [here](https://docs.aws.amazon.com/cli/latest/)       |
-| **Docker**    | Build & publish your container image | Refer this document [here](https://docs.docker.com/get-docker/)              |
+| **Docker**    | Build & publish your container image | Refer this document [here](https://docs.docker.com/get-docker/)           |
 
-
-> Note: AWS account is required. Ensure your AWS CLI is configured using
->  
-> `aws configure` and give your creds like Access Key, default region etc...
+**AWS Account Requirements:**
+- Valid AWS account with appropriate IAM permissions
+- Configured AWS credentials (`aws configure`)
 
 
 ### 📂 Project Structure
@@ -47,7 +51,7 @@ terraform/
 
 ### 🚀 Deployment Steps
 
-1. Clone the repo
+**Step-1: Clone the repo**
 ```sh
 # Clone the repository
 git clone https://github.com/ahsan598/particle-41-assessment.git
@@ -55,7 +59,7 @@ git clone https://github.com/ahsan598/particle-41-assessment.git
 # Move into the project directory
 cd particle-41-assessment/terraform
 ```
-2. Update `terraform.tfvars` or use the default values provided.
+**Step-2: Update `terraform.tfvars` or use the default values provided.**
 
 **📌 Important Notes**
 - `container_image` → Must point to your Docker image
@@ -63,7 +67,7 @@ cd particle-41-assessment/terraform
 (Example: `8085` if your app exposes `8085`)
 
 
-3. Initialize, validate and plan configuration
+**Step-3: Initialize, validate and plan configuration**
 ```sh
 # Install required providers plugins and modules
 terraform init
@@ -75,7 +79,7 @@ terraform validate
 terraform plan
 ```
 
-4. Apply Infrastructure using below options
+**Step-4: Apply Infrastructure using below options**
 ```sh
 # Option A: Recommended (Using Plan File)
 
@@ -89,30 +93,14 @@ terraform apply "plan.tfplan"
 terraform apply --auto-approve
 ```
 
-5. After deployment, check important outputs:
+**Step-5: After deployment, check important outputs**
 ```sh
 terraform output
 ```
 
-### 🧩 Optional: Apply in Stages (Safer for Debugging)
-
-Use this if you want to debug step-by-step 👇
-```sh
-# Stage 1: VPC
-terraform apply -target=module.vpc
-
-# Stage 2: Security Groups
-terraform apply -target=module.security_groups
-
-# Stage 3: Application Load Balancer
-terraform apply -target=module.alb
-
-# Stage 4: ECS
-terraform apply -target=module.ecs
-```
-
 ### Verify the deployment
-1. Access the Application, Get the ALB DNS name
+
+**Step-1: Access the Application, Get the ALB DNS name**
 ```sh
 terraform output alb_dns_name
 
@@ -120,7 +108,7 @@ terraform output alb_dns_name
 http://<alb_dns_name>
 ```
 
-2. Check ECS Tasks & Service Status
+**Step-2: Check ECS Tasks & Service Status**
 ```sh
 aws ecs list-tasks --cluster <ecs_cluster_name>
 
@@ -130,15 +118,13 @@ aws ecs describe-services \
 ```
 
 
-### Teardown all resources
-To remove all provisioned resources:
+### Delete all resources
+**To remove all provisioned resources**
 ```sh
 # Destroy all resources
 terraform destroy --auto-approve
-```
-⚠️ This will delete VPC, ALB, ECS, Logs — everything.
 
+# This will delete VPC, ALB, ECS, Logs — everything.
+``` 
 
-###  🎉 Done!
-
-Your Docker app is now live on AWS ECS + ALB using Terraform
+**Your Docker app is now live on AWS ECS + ALB using Terraform**

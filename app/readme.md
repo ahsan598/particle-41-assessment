@@ -15,7 +15,6 @@ A minimal **Node.js** microservice that returns the current **Timestamp** and th
 ### ⚙️ Prerequisites
 
 Before starting this project, ensure you have the following tools installed on your machine.  
-If any of these tools are not installed, please install them first before proceeding with the project setup.
 
 | Tool        | Purpose                                   | Documentation              |
 |-------------|-------------------------------------------|----------------------------|
@@ -95,7 +94,7 @@ docker build -t <image-name>:<tag> .
 docker login
 
 # Tag the image
-docker tag <image-name>:<tag> your-dockerhub-username/<image-name>:<tag>
+docker tag <image-name>:<tag> <dockerhub-username>/<image-name>:<tag>
 
 # Push the Docker image to Docker Hub
 docker push <dockerhub-username>/<image-name>:<tag>
